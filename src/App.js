@@ -255,28 +255,6 @@ function App() {
             <Box component="form" onSubmit={handleSubmit}>
               <Grid container spacing={3}>
                 <Grid item xs={12} sm={6}>
-                  <FormControl fullWidth disabled={!isTimeSelected}>
-                    <InputLabel id="court-number-label">Court Number</InputLabel>
-                    <Select
-                      labelId="court-number-label"
-                      id="courtNumber"
-                      value={courtNumber}
-                      label="Court Number"
-                      onChange={(e) => setCourtNumber(e.target.value)}
-                      required
-                    >
-                      {availableCourts().length === 0 && (
-                        <MenuItem disabled>No courts available for this time.</MenuItem>
-                      )}
-                      {availableCourts().map((court) => (
-                        <MenuItem key={court} value={court}>
-                          {court}
-                        </MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
-                </Grid>
-                <Grid item xs={12} sm={6}>
                   <TextField
                     fullWidth
                     label="Booked By"
@@ -310,6 +288,28 @@ function App() {
                     onChange={(e) => setEndTime(e.target.value)}
                     required
                   />
+                </Grid>
+                <Grid item xs={12} sm={6} style={{minWidth: '125px'}}>
+                  <FormControl fullWidth disabled={!isTimeSelected}>
+                    <InputLabel id="court-number-label">Court Number</InputLabel>
+                    <Select
+                      labelId="court-number-label"
+                      id="courtNumber"
+                      value={courtNumber}
+                      label="Court Number"
+                      onChange={(e) => setCourtNumber(e.target.value)}
+                      required
+                    >
+                      {availableCourts().length === 0 && (
+                        <MenuItem disabled>No courts available for this time.</MenuItem>
+                      )}
+                      {availableCourts().map((court) => (
+                        <MenuItem key={court} value={court}>
+                          {court}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
                 </Grid>
                 <Grid item xs={12}>
                   <Button
